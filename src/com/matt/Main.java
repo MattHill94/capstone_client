@@ -12,32 +12,23 @@ public class Main {
 
     public static void main(String[] args) {
 
-
-
         try(Socket socket = new Socket("localhost", 6001)) {
 //            socket.setSoTimeout(5000);
             BufferedReader echos = new BufferedReader(
                     new InputStreamReader(socket.getInputStream()));
             PrintWriter stringToEcho = new PrintWriter(socket.getOutputStream(), true);
-
             Scanner scanner = new Scanner(System.in);
-
             String echoString;
             String response;
-
             do {
+                printMenu();
                 echoString = scanner.nextLine();
                 stringToEcho.println(echoString);
-//                printMenu();
-
-
                 if(!echoString.equals("start")) {
                     response = echos.readLine();
                     System.out.println(response);
                 }
-
             } while(!echoString.equals("start"));
-
         } catch(
                 SocketTimeoutException e) {
             System.out.println("The socket timed out");
@@ -51,12 +42,12 @@ public class Main {
     private static void printMenu() {
         System.out.println("Available actions:\npress");
         System.out.println("0 - to quit\n" +
-                "1 - to play next song\n" +
-                "2 - to play previous song\n" +
-                "3 - to replay the current song\n" +
-                "4 - list songs in the playlist\n" +
-                "5 - print available actions.\n" +
-                "6 - delete current song from playlist");
+                "1 - Ready your troops\n" +
+                "2 - Show id with ammo\n" +
+                "3 - Show id with rations\n" +
+                "4 - Show id with water\n" +
+                "5 - show id with location\n" +
+                "6 - MOVE 100 METERS");
 
     }
 
