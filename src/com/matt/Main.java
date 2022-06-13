@@ -12,7 +12,7 @@ public class Main {
 
     public static void main(String[] args) {
 
-        try(Socket socket = new Socket("localhost", 6001)) {
+        try(Socket socket = new Socket("localhost", 6002)) {
 //            socket.setSoTimeout(5000);
             BufferedReader echos = new BufferedReader(
                     new InputStreamReader(socket.getInputStream()));
@@ -24,6 +24,7 @@ public class Main {
                 printMenu();
                 echoString = scanner.nextLine();
                 stringToEcho.println(echoString);
+
                 if(!echoString.equals("start")) {
                     response = echos.readLine();
                     System.out.println(response);
@@ -41,26 +42,15 @@ public class Main {
 
     private static void printMenu() {
         System.out.println("Available actions:\npress");
-        System.out.println("0 - to quit\n" +
+        System.out.println(
+                "0 - to quit\n" +
                 "1 - Ready your troops\n" +
                 "2 - Show id with ammo\n" +
                 "3 - Show id with rations\n" +
                 "4 - Show id with water\n" +
                 "5 - show id with location\n" +
-                "6 - MOVE 100 METERS");
-
+                "6 - Move 100 meters\n" +
+                "7 - Receive 3 days of rations\n" +
+                "8 - Receive 3 days of water");
     }
-
-
-//    private static void printList(LinkedList<Song> playList) {
-//        Iterator<Song> iterator = playList.iterator();
-//        System.out.println("================================");
-//        while(iterator.hasNext()) {
-//            System.out.println(iterator.next());
-//        }
-//        System.out.println("================================");
-//    }
-
-
-
 }
